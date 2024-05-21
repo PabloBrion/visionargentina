@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vision - Películas y Series</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Aquí puedes agregar estilos personalizados */
+    body {
+      background-color: #f8f9fa; /* Color de fondo gris */
+    }
+    .navbar {
+      background-color: #dc3545; /* Rojo */
+    }
+    .navbar-brand {
+      animation: animateLogo 1s infinite alternate; /* Animación del logo */
+    }
+    @keyframes animateLogo {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+    .jumbotron {
+      background-image: url('tu-imagen-de-fondo.jpg'); /* Imagen de fondo */
+      background-size: cover;
+      color: white; /* Texto en blanco */
+      text-align: center;
+      padding: 100px 0; /* Espaciado interno */
+    }
+    .registro-form {
+      background-image: url('tu-imagen-de-fondo-registro.jpg'); /* Imagen de fondo del formulario de registro */
+      background-size: cover;
+      padding: 50px;
+      border-radius: 15px; /* Bordes redondeados */
+    }
+  </style>
+</head>
+<body>
+
+<!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Vision</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="tendencias.html">Tendencias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="registro.html">Registrarse</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Iniciar Sesión</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Contenido principal -->
+<!-- Formulario de registro -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 registro-form">
+      <h2 class="text-center">Registro</h2>
+      <form id="registroForm">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+          <input type="text" class="form-control" id="apellido" name="apellido" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+          <label for="fechaNacimiento">Fecha de nacimiento</label>
+          <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
+        </div>
+
+        <div class="form-group">
+          <label for="selectProvincias">Provincia</label>
+          <select class="form-group" id="selectProvincias">
+            <option  class="form-group" value="">Seleccionar Provincia</option>
+          </select>
+        </div>
+
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="terminos" required>
+          <label class="form-check-label" for="terminos">Aceptar términos y condiciones</label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="registroBtn" disabled>Registro</button>
+      </form>
+   
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+           <a class="nav-link" href="#">Términos y condiciones</a>
+          <a class="nav-link" href="#">Preguntas frecuentes</a>
+          <a class="nav-link" href="#">Ayuda</a>
+      <a class="btn btn-primary" href="index.html">Administrador Películas</a>
+    </div>
+  </nav>
+</footer>
+
+  <!-- Scripts de Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Script para desplazamiento suave al hacer clic en los enlaces de navegación
+    $('nav a').on('click', function(event) {
+      if (this.hash !== '') {
+        event.preventDefault();
+        const hash = this.hash;
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 800);
+      }
+    });
+  </script>
+<script>
+  $(document).ready(function() {
+    // Función para verificar si todos los campos están completados
+    function verificarCampos() {
+      var nombre = $('#nombre').val();
+      var apellido = $('#apellido').val();
+      var email = $('#email').val();
+      var password = $('#password').val();
+      var fechaNacimiento = $('#fechaNacimiento').val();
+      var pais = $('#selectProvincias').val();
+      var terminos = $('#terminos').prop('checked');
+      
+      // Habilitar el botón de registro solo si todos los campos están completados
+      if (nombre && apellido && email && password && fechaNacimiento && selectProvincias && terminos) {
+        $('#registroBtn').prop('disabled', false);
+      } else {
+        $('#registroBtn').prop('disabled', true);
+      }
+    }
+    
+    // Verificar campos al cambiar el valor de cualquier campo del formulario
+    $('#registroForm input, #registroForm select, #registroForm textarea').on('input', verificarCampos);
+    $('#terminos').on('change', verificarCampos);
+  });
+
+//Cargar el combo de las provincias mediante una API
+  document.addEventListener("DOMContentLoaded", function() {
+      const selectProvincias = document.getElementById("selectProvincias");
+  
+      // Realizar la solicitud GET a la API
+      fetch('https://apis.datos.gob.ar/georef/api/provincias')
+          .then(response => {
+              // Verificar si la solicitud fue exitosa
+              if (!response.ok) {
+                  throw new Error('Error al obtener los datos');
+              }
+              // Convertir la respuesta a formato JSON
+              return response.json();
+          })
+          .then(data => {
+              // Procesar los datos y crear las opciones para el select
+              data.provincias.forEach(provincia => {
+                  const option = document.createElement('option');
+                  option.value = provincia.id;
+                  option.textContent = provincia.nombre;
+                  selectProvincias.appendChild(option);
+              });
+          })
+          .catch(error => {
+              // Capturar y manejar errores
+              console.error('Error en el llenado de combo de provincias:', error);
+          });
+  });
+  </script>
+
+</body>
+</html>

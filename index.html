@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision - Películas y Series</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#inicio">Vision</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="tendencias.html">Tendencias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="registro.html">Registrarse</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Iniciar Sesión</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<section id="inicio">
+<!-- Contenido principal -->
+<div class="jumbotron">
+    <div class="container">
+      <h1 class="display-4">Películas y series ilimitadas en un solo lugar si vives en Ámerica</h1>
+      <p class="lead">Disfruta donde quieras. Cancela en cualquier momento.</p>
+      <a class="btn btn-primary btn-lg" href="registro.html" role="button">Registrarse</a>
+    </div>
+</div>
+</section>
+
+
+
+<footer class="footer">
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container">
+             <a class="nav-link" href="#">Términos y condiciones</a>
+            <a class="nav-link" href="#">Preguntas frecuentes</a>
+            <a class="nav-link" href="#">Ayuda</a>
+        <a class="btn btn-primary" href="index.html">Administrador Películas</a>
+      </div>
+    </nav>
+  </footer>
+
+
+<!-- Scripts de Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  // Script para desplazamiento suave al hacer clic en los enlaces de navegación
+  $('nav a').on('click', function(event) {
+    if (this.hash !== '') {
+      event.preventDefault();
+      const hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800);
+    }
+  });
+</script>
+
+</body>
+</html>

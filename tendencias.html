@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vision - Películas y Series</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Aquí puedes agregar estilos personalizados */
+    body {
+      background-color: #f8f9fa; /* Color de fondo gris */
+    }
+    .navbar {
+      background-color: #dc3545; /* Rojo */
+    }
+    .navbar-brand {
+      animation: animateLogo 1s infinite alternate; /* Animación del logo */
+    }
+    @keyframes animateLogo {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+    .jumbotron {
+      background-image: url('tu-imagen-de-fondo.jpg'); /* Imagen de fondo */
+      background-size: cover;
+      color: white; /* Texto en blanco */
+      text-align: center;
+      padding: 100px 0; /* Espaciado interno */
+    }
+    .registro-form {
+      background-image: url('tu-imagen-de-fondo-registro.jpg'); /* Imagen de fondo del formulario de registro */
+      background-size: cover;
+      padding: 50px;
+      border-radius: 15px; /* Bordes redondeados */
+    }
+  </style>
+</head>
+<body>
+
+<!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Vision</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="tendencias.html">Tendencias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="registro.html">Registrarse</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Iniciar Sesión</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Contenido principal -->
+<!-- Formulario de registro -->
+<div class="container">
+    <h1 class="titulo-seccion">Catálogo de Películas y Series</h1>
+    <div class="row">
+      <!-- Card 1 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="img/pelicula1.jpg" class="card-img-top" alt="Misión Imposible: Sentencia Mortal">
+          <div class="card-body">
+            <h5 class="card-title">Misión Imposible: Sentencia Mortal</h5>
+            <p class="card-text">Ethan Hunt se embarca en la misión más peligrosa de su vida: ocalizar una nueva y terrorífica arma que amenaza a toda la humanidad antes de que sea muy tarde.</p>
+            <a href="#" class="btn btn-primary">Alquilar</a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="img/pelicula2.jpg" class="card-img-top" alt="Gran Turismo">
+          <div class="card-body">
+            <h5 class="card-title">Gran Turismo</h5>
+            <p class="card-text">La película relata la historia de Jann Mardenborough, un joven jugador de Gran Turismo cuyas habilidades de juego ganaron una serie de competencias de Nismo, la división de automovilismo de Nissan, para convertirse en un gran piloto de carreras profesional.</p>
+            <a href="#" class="btn btn-primary">Alquilar</a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="img/pelicula3.jpg" class="card-img-top" alt="Napoleón">
+          <div class="card-body">
+            <h5 class="card-title">Napoleón</h5>
+            <p class="card-text">Napoleón (en inglés: Napoleon) es una película de drama histórico épico dirigida y producida por Ridley Scott y escrita por David Scarpa. Basada en la historia de Napoleón Bonaparte, la película relata principalmente su ascenso al poder y su relación con la emperatriz Josefina. La película está protagonizada por Joaquin Phoenix como Napoleón y Vanessa Kirby como Josefina.</p>
+            <a href="#" class="btn btn-primary">Alquilar</a>
+          </div>
+        </div>
+      </div>
+      <!-- Agregar más cards según sea necesario -->
+    </div>
+  </div>
+
+<footer class="footer">
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+           <a class="nav-link" href="#">Términos y condiciones</a>
+          <a class="nav-link" href="#">Preguntas frecuentes</a>
+          <a class="nav-link" href="#">Ayuda</a>
+      <a class="btn btn-primary" href="index.html">Administrador Películas</a>
+    </div>
+  </nav>
+</footer>
+
+<!-- Scripts de Bootstrap y jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Función para verificar si todos los campos están completados
+    function verificarCampos() {
+      var nombre = $('#nombre').val();
+      var apellido = $('#apellido').val();
+      var email = $('#email').val();
+      var password = $('#password').val();
+      var fechaNacimiento = $('#fechaNacimiento').val();
+      var pais = $('#pais').val();
+      var terminos = $('#terminos').prop('checked');
+      
+      // Habilitar el botón de registro solo si todos los campos están completados
+      if (nombre && apellido && email && password && fechaNacimiento && pais && terminos) {
+        $('#registroBtn').prop('disabled', false);
+      } else {
+        $('#registroBtn').prop('disabled', true);
+      }
+    }
+    
+    // Verificar campos al cambiar el valor de cualquier campo del formulario
+    $('#registroForm input, #registroForm select, #registroForm textarea').on('input', verificarCampos);
+    $('#terminos').on('change', verificarCampos);
+  });
+</script>
+
+</body>
+</html>
